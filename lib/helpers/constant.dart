@@ -1,3 +1,3 @@
 
 
- const apiKey = "AIzaSyC8_1kGR1J8KumfwVKCMEwRCyYjEEBrguE";
+ const apiKey = "API-KEY-HERE";
