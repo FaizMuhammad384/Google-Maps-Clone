@@ -1,14 +1,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!--    Google map permissions   -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+
     <application
         android:label="google_maps_clone"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 
-
-<!--    Google map api setup    -->
+     <!--    Google map api setup    -->
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="API-KEY-HERE"/>
-
+            android:value="AIzaSyC8_1kGR1J8KumfwVKCMEwRCyYjEEBrguE"/>
 
         <activity
             android:name=".MainActivity"
