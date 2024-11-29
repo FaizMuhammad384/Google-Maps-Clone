@@ -14,15 +14,17 @@ class UserCurrentLocation extends StatefulWidget {
 }
 
 class _UserCurrentLocationState extends State<UserCurrentLocation> {
+
+
+
   /// completer
   Completer<GoogleMapController> googleMapController = Completer();
+  
+   /// list of markers
+   List<Marker> markers = [];
 
-
-  /// list of markers
-  List<Marker> markers = [];
-
-  /// get user current location
-  Future<Position> getUserCurrentLocation() async {
+    /// get user current location
+    Future<Position> getUserCurrentLocation() async {
 
 
     /// request permission
@@ -36,7 +38,7 @@ class _UserCurrentLocationState extends State<UserCurrentLocation> {
     return await Geolocator.getCurrentPosition();
   }
 
-  /// get data from user current location
+    /// get data from user current location
     getUserCurrentLocationData() {
     getUserCurrentLocation().then((value) async {
       print("User Latitude: ${value.latitude}");
@@ -103,12 +105,6 @@ class _UserCurrentLocationState extends State<UserCurrentLocation> {
   }
 }
 
-
-
-/// permissions
-// coarse location
-// fine location
-// background location
 
 
 
