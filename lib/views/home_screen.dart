@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-// import 'package:flutter_polyline_points/flutter_polyline_points.dart';
-// import 'package:google_maps_clone/helpers/constant.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:google_maps_clone/helpers/constant.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
@@ -20,6 +20,37 @@ class _HomeScreenState extends State<HomeScreen> {
   final Completer<GoogleMapController> googleMapController = Completer();
 
 
+
+  /// poly line points
+  List<LatLng> polylineCoordinates = [];
+  Future<void> getPolylinePoints() async {
+    PolylinePoints polylinePoints = PolylinePoints();
+    PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
+      googleApiKey: apiKey,
+      request: PolylineRequest(
+        origin: PointLatLng(30.9473893,70.9258417),
+        destination: PointLatLng(30.9472792,70.9438665),
+        mode: TravelMode.driving,
+      ),
+    );
+    print("result: ${result.points}");
+
+    if (result.points.isNotEmpty) {
+      for(var point in result.points){
+        polylineCoordinates.add(LatLng(point.latitude,point.longitude));
+      }
+    }
+
+    setState(() {});
+
+
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getPolylinePoints();
+  }
 
 
   @override
@@ -65,7 +96,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               },
-
+              polylines: {
+                Polyline(
+                  polylineId: PolylineId("First poly line"),
+                  points: polylineCoordinates,
+                ),
+              },
             ),
           ),
           SizedBox(height: 50),

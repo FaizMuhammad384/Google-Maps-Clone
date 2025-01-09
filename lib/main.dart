@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_clone/views/user_current_location.dart';
+import 'package:google_maps_clone/views/search_places_api_screen.dart';
 
 
 void main() {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: UserCurrentLocation(),
+      home: SearchPlacesApiScreen(),
     );
   }
 }
